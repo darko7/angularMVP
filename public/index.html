@@ -1,0 +1,54 @@
+ <!DOCTYPE html>
+    <html ng-app="scotchApp">
+    <head>
+      <!-- SCROLLS -->
+      <!-- load bootstrap and fontawesome via CDN -->
+      <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
+      <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" />
+
+
+
+      <!-- SPELLS -->
+      <!-- load angular and angular route via CDN -->
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
+      <script src="script.js"></script>
+    </head>
+   <body ng-controller="mainController">
+
+        <!-- HEADER AND NAVBAR -->
+        <header>
+            <nav class="navbar navbar-default">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">Darko MVP</a>
+                </div>
+
+                <ul class="nav navbar-nav navbar-left">
+                    <li><a href="index.html"><i class="fa fa-home"></i> Zip Code</a></li>
+                    <li><a href="map.html"><i class="fa fa-map-marker"></i> Map</a></li>
+                    <li><a href="weather.html"><i class="fa fa-comment"></i> Weather</a></li>
+                </ul>
+            </div>
+            </nav>
+        </header>
+
+         <h4>Asynchronous results</h4>
+    <pre>Model: {{asyncSelected | json}}</pre>
+    <input type="text" ng-model="asyncSelected" placeholder="Locations loaded via $http" uib-typeahead="address for address in getLocation($viewValue)" typeahead-loading="loadingLocations" typeahead-no-results="noResults" class="form-control">
+    <i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>
+    <div ng-show="noResults">
+      <i class="glyphicon glyphicon-remove"></i> No Results Found
+    </div>
+
+        <!-- MAIN CONTENT AND INJECTED VIEWS -->
+        <div id="main" class="container">
+            <div class="row ">
+              <input type="text">
+            </div>
+             {{ message }}
+
+        </div>
+
+    </body>
+    </html>
